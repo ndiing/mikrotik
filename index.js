@@ -2,6 +2,38 @@ const net = require("net");
 
 /**
  * MikroTik class handles communication with a MikroTik router via its API using a TCP connection.
+ * @example
+ * const mikrotik = new MikroTik({
+ *     host: "192.168.88.1",
+ *     port: 8720,
+ * });
+ *
+ * mikrotik
+ *     .send({
+ *         path: "/login",
+ *         body: {
+ *             name: "ndiing",
+ *             password: "rahasia123",
+ *         },
+ *     })
+ *     .then(console.log)
+ *     .catch(console.log);
+ *
+ *
+ * mikrotik
+ *     .send({
+ *         path: "/system/resource/print",
+ *     })
+ *     .then(console.log)
+ *     .catch(console.log);
+ *
+ * mikrotik
+ *     .send({
+ *         path: "/interface/vlan/print",
+ *     })
+ *     .then(console.log)
+ *     .catch(console.log);
+ *
  */
 class MikroTik {
     /**
@@ -209,9 +241,7 @@ class MikroTik {
             }
 
             for (const name in query) {
-                Array.isArray(query[name])
-                    ? query[name].forEach((value) => words.push(`?${name}=${value}`))
-                    : words.push(`?${name}=${query[name]}`);
+                Array.isArray(query[name]) ? query[name].forEach((value) => words.push(`?${name}=${value}`)) : words.push(`?${name}=${query[name]}`);
             }
 
             this.sendCommand(words, (err, response) => {
@@ -223,37 +253,3 @@ class MikroTik {
 
 module.exports = MikroTik;
 
-
-// // Usage example
-// {
-//     const mikrotik = new MikroTik({
-//         host: "103.28.148.202",
-//         port: 8720,
-//     });
-    
-//     mikrotik
-//         .send({
-//             path: "/login",
-//             body: {
-//                 name: "ndiing",
-//                 password: "rahasia123",
-//             },
-//         })
-//         .then(console.log)
-//         .catch(console.log);
-        
-    
-//     mikrotik
-//         .send({
-//             path: "/system/resource/print",
-//         })
-//         .then(console.log)
-//         .catch(console.log);
-        
-//     // mikrotik
-//     //     .send({
-//     //         path: "/interface/vlan/print",
-//     //     })
-//     //     .then(console.log)
-//     //     .catch(console.log);
-// }

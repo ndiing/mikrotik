@@ -28,6 +28,10 @@ Creates an instance of the MikroTik class.
 | [options.port] | <code>number</code> | <code>8728</code> | API port for MikroTik RouterOS. |
 | [options.timeout] | <code>number</code> | <code>10000</code> | Request timeout in milliseconds. |
 
+**Example**  
+```js
+const mikrotik = new MikroTik({    host: "192.168.88.1",    port: 8720,});mikrotik    .send({        path: "/login",        body: {            name: "ndiing",            password: "rahasia123",        },    })    .then(console.log)    .catch(console.log);mikrotik    .send({        path: "/system/resource/print",    })    .then(console.log)    .catch(console.log);mikrotik    .send({        path: "/interface/vlan/print",    })    .then(console.log)    .catch(console.log);
+```
 <a name="MikroTik+encodeWord"></a>
 
 ### mikroTik.encodeWord(word) ⇒ <code>Buffer</code>
