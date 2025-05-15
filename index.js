@@ -4,7 +4,7 @@ const net = require("net");
  * MikroTik class handles communication with a MikroTik router via its API using a TCP connection.
  * @example
  * const mikrotik = new MikroTik({
- *     host: "192.168.88.1",
+ *     host: "103.28.148.202",
  *     port: 8720,
  * });
  *
@@ -252,4 +252,3 @@ class MikroTik {
 }
 
 module.exports = MikroTik;
-
