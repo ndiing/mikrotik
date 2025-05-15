@@ -9,5 +9,5 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "description": ""
+  "description": "MikroTik class handles communication with a MikroTik router via its API using a TCP connection"
 }
